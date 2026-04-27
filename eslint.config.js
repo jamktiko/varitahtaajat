@@ -39,6 +39,11 @@ export default defineConfig(
 	{
 		// Override or add rule settings here, such as:
 		// 'svelte/button-has-type': 'error'
-		rules: {}
+		rules: {
+			'@typescript-eslint/no-explicit-any': 'warn',
+			'@typescript-eslint/explicit-function-return-type': 'warn',
+			'@typescript-eslint/explicit-member-accessibility': 'warn',
+			'svelte/require-each-key': 'warn'
+		}
 	}
 );
