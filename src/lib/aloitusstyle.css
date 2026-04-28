@@ -1,0 +1,254 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+.container {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	position: relative;
+	width: 100%;
+	min-height: 100vh;
+	background: none;
+}
+.circle {
+	display: grid;
+	place-items: center;
+	width: clamp(200px, 35vw, 400px);
+	height: clamp(200px, 35vw, 400px);
+	border-radius: 50%;
+	aspect-ratio: 1 / 1;
+	background:
+		conic-gradient(
+			from 0deg at 50% 50%,
+			#e7e040 0deg,
+			#eeaa3c 44.65484797954559deg,
+			#e8403b 89.77792382240295deg,
+			#b33ed5 131.61365747451782deg,
+			#694ae8 182.1932315826416deg,
+			#3ccae7 231.34020566940308deg,
+			#3ce885 269.53795194625854deg,
+			#89e743 313.0363440513611deg,
+			#e7e040 360deg
+		),
+		#d9d9d9;
+}
+
+.incircle {
+	display: inline-flex;
+	justify-content: center;
+	align-items: center;
+	cursor: pointer;
+	padding: 15px 25px;
+	width: clamp(160px, 20vw, 260px);
+	height: clamp(160px, 20vw, 260px);
+	aspect-ratio: 1 / 1;
+	background: #fff;
+	font-size: clamp(32px, 20vw, 50px);
+	border: none;
+	border-radius: 50%;
+	box-shadow: 0 9px #999;
+}
+
+.incircle:active {
+	box-shadow: 0 5px #666;
+	transform: translateY(4px);
+}
+
+.jersey-10-regular {
+	font-family: 'Jersey 10', sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+.isoympyra {
+	display: none;
+}
+.ympyra1 {
+	position: absolute;
+	bottom: 8%;
+	left: 8%;
+	width: clamp(200px, 25vw, 350px);
+	height: clamp(200px, 25vw, 350px);
+	border-radius: 50%;
+	background-color: #8338ec;
+}
+
+.ympyra2 {
+	position: absolute;
+	top: 12%;
+	right: 8%;
+
+	width: clamp(140px, 25vw, 200px);
+	height: clamp(140px, 25vw, 200px);
+
+	border-radius: 50%;
+	background-color: #fb5607;
+}
+
+.ympyra3-1,
+.ympyra3-2 {
+	position: absolute;
+	line-height: 1;
+	width: clamp(60px, 20vw, 120px);
+	height: clamp(60px, 20vw, 120px);
+	border-radius: 50%;
+}
+
+.ympyra3-1 {
+	top: 6%;
+	left: 24%;
+	background-color: #ff006e;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+}
+
+.ympyra3-2 {
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	bottom: 6%;
+	right: 8%;
+	background-color: #ffbe0b;
+}
+.material-symbols-outlined {
+	font-family: 'Material Symbols Outlined';
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 40;
+}
+
+.icon-1 {
+	color: #000000;
+}
+
+.icon-2 {
+	color: #000000;
+}
+.material-symbols-outlined.icon-1 {
+	font-size: clamp(40px, 10vw, 60px);
+}
+
+.material-symbols-outlined.icon-2 {
+	font-size: clamp(40px, 10vw, 60px);
+}
+.ympyra4-1,
+.ympyra4-2 {
+	position: absolute;
+	width: clamp(20px, 10vw, 40px);
+	height: clamp(20px, 10vw, 40px);
+	border-radius: 50%;
+}
+
+.ympyra4-1 {
+	top: 24%;
+	left: 14%;
+	background-color: #3a86ff;
+}
+
+.ympyra4-2 {
+	bottom: 26%;
+	right: 24%;
+	background-color: #ff006e;
+}
+
+/* ===== TABLET ===== */
+@media (min-width: 768px) {
+	.circle {
+		width: clamp(400px, 35vw, 560px);
+		height: clamp(400px, 35vw, 560px);
+	}
+	.incircle {
+		width: clamp(320px, 20vw, 500px);
+		height: clamp(320px, 20vw, 500px);
+		font-size: clamp(50px, 20vw, 100px);
+	}
+	.ympyra1 {
+	}
+	.ympyra2 {
+	}
+	.ympyra3-1 {
+	}
+	.ympyra3-2 {
+	}
+	.ympyra4-1 {
+	}
+	.ympyra4-2 {
+	}
+}
+
+/* ===== LAPTOP ===== */
+@media (min-width: 1024px) {
+	.page {
+		position: relative;
+	}
+	.container {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		overflow: hidden;
+		position: relative;
+		background:
+			linear-gradient(
+				311deg,
+				#ffbe0b 13.63%,
+				#fb5607 32.86%,
+				#ff006e 53.62%,
+				#8338ec 67.36%,
+				#3a86ff 86.37%
+			),
+			linear-gradient(0deg, #fb5607 0%, #fb5607 100%),
+			linear-gradient(0deg, #ff006e 0%, #ff006e 100%),
+			linear-gradient(0deg, #8338ec 0%, #8338ec 100%), #3a86ff;
+	}
+	.isoympyra {
+		position: absolute;
+		display: flex;
+		width: clamp(1000px, 20vw, 1024px);
+		height: clamp(1000px, 20vw, 1024px);
+		border-radius: 50%;
+		background: white;
+		z-index: 1;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+	}
+	.circle {
+		position: absolute;
+		top: 50%;
+		left: 50%;
+		transform: translate(-50%, -50%);
+		width: clamp(400px, 30vw, 560px);
+		height: clamp(400px, 30vw, 560px);
+		z-index: 2;
+	}
+	.incircle {
+		width: clamp(320px, 20vw, 500px);
+		height: clamp(320px, 20vw, 500px);
+		font-size: clamp(50px, 20vw, 100px);
+		z-index: 3;
+	}
+	.ympyra1 {
+		display: none;
+	}
+	.ympyra2 {
+		display: none;
+	}
+	.ympyra3-1 {
+		display: none;
+	}
+	.ympyra3-2 {
+		display: none;
+	}
+	.ympyra4-1 {
+		display: none;
+	}
+	.ympyra4-2 {
+		display: none;
+	}
+}
