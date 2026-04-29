@@ -28,6 +28,9 @@ export class Game1 {
 	public CurrentColor: ColorData | null = null;
 
 	private _colors: ColorData[] = [];
+	public get Colors(): ColorData[] {
+		return this._colors;
+	}
 	private _api: ColorAPI;
 	public difficulty: Difficulties;
 	public constructor(difficulty: Difficulties) {
