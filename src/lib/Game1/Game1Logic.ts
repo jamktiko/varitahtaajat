@@ -25,6 +25,7 @@ export class Game1 {
 	public State: GameState = GameState.NotActive;
 	public AnimState: AnimState = AnimState.hidden;
 	public UserQuess: number[] = [];
+	public CurrentColor: ColorData | null = null;
 
 	private _colors: ColorData[] = [];
 	private _api: ColorAPI;
@@ -44,9 +45,17 @@ export class Game1 {
 		this.State = GameState.Ready;
 	}
 
-	public async PlayAnimation() {
+	public async PlayAnimationArrowAnimation(color: ColorData) {
 		this.AnimState = AnimState.start;
-		await delay;
+		this.CurrentColor = color;
+		await delay(100);
+		this.AnimState = AnimState.end;
+	}
+
+	public async PlayArrowShow() {
+		for (const color of this._colors) {
+			await this.PlayAnimationArrowAnimation(color);
+		}
 	}
 
 	public GetAccuracy: boolean[] = this.UserQuess.map((x, i) => x == i);
