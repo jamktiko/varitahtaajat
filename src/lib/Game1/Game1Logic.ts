@@ -43,8 +43,14 @@ export class Game1 {
 		this._colors = [];
 	}
 
-	public async StartGame() {
-		this._colors = await this._api.getRandomColorList(difficultyLookup[this.difficulty]);
+	public async StartGame(colorAmount?: number) {
+		let gameDifficulty = difficultyLookup[this.difficulty];
+
+		if (colorAmount != undefined) {
+			gameDifficulty = colorAmount;
+		}
+
+		this._colors = await this._api.getRandomColorList(gameDifficulty);
 		this.State = GameState.Ready;
 	}
 
