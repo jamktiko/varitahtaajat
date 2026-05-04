@@ -13,7 +13,7 @@
 	import Loppumuistipeli from './Loppumuistipeli.svelte';
 	import Varivalinta from './Varivalinta.svelte';
 
-	const isTabletOrBigger = new MediaQuery('(min-width: 768px)');
+	const isTabletOrBiggerMQ = new MediaQuery('min-width: 768px');
 
 	let rounds: number = $state(1);
 
@@ -39,15 +39,27 @@
 {/if}
 
 {#if gameLogic.State == GameState.Ready}
-	<div class="animHolder">
-		{#if gameLogic.AnimState == AnimState.start}
-			<div
-				class="tempAnim"
-				style="background-color: {gameLogic.CurrentColor?.hex};"
-				in:flyNoDissolve={{ x: '0', y: '700', duration: 1000 }}
-			></div>
-		{/if}
-	</div>
+	{#if isTabletOrBiggerMQ.current}
+		<div class="animHolder">
+			{#if gameLogic.AnimState == AnimState.start}
+				<div
+					class="tempAnim"
+					in:flyNoDissolve={{ x: '100vw', y: '0', duration: 1000 }}
+					style="background-color: {gameLogic.CurrentColor?.hex};"
+				></div>
+			{/if}
+		</div>
+	{:else}
+		<div class="animHolder">
+			{#if gameLogic.AnimState == AnimState.start}
+				<div
+					class="tempAnim"
+					in:flyNoDissolve={{ x: '0', y: '100vh', duration: 1000 }}
+					style="background-color: {gameLogic.CurrentColor?.hex};"
+				></div>
+			{/if}
+		</div>
+	{/if}
 {/if}
 
 {#if gameLogic.State == GameState.Guessing}
