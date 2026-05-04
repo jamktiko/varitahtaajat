@@ -12,15 +12,17 @@
 	import Aloita from './Aloita.svelte';
 	import Loppumuistipeli from './Loppumuistipeli.svelte';
 	import Varivalinta from './Varivalinta.svelte';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
 
 	const isTabletOrBiggerMQ = new MediaQuery('min-width: 768px');
 
-	let rounds: number = $state(1);
+	let rounds: number = $state(2);
 
 	async function startGame() {
 		console.log('test');
-
-		await gameLogic.StartGame(Math.min(Math.round(rounds * 1.5), 16));
+		gameLogic.resetGame();
+		await gameLogic.StartGame(Math.min(rounds, 16));
 		console.log(gameLogic.State);
 		await gameLogic.PlayArrowShow();
 		console.log(gameLogic.State);
@@ -44,7 +46,7 @@
 			{#if gameLogic.AnimState == AnimState.start}
 				<div
 					class="tempAnim"
-					in:flyNoDissolve={{ x: '100vw', y: '0', duration: 1000 }}
+					in:flyNoDissolve={{ x: '100vw', y: '0', duration: 2000 }}
 					style="background-color: {gameLogic.CurrentColor?.hex};"
 				></div>
 			{/if}
@@ -54,7 +56,7 @@
 			{#if gameLogic.AnimState == AnimState.start}
 				<div
 					class="tempAnim"
-					in:flyNoDissolve={{ x: '0', y: '100vh', duration: 1000 }}
+					in:flyNoDissolve={{ x: '0', y: '100vh', duration: 2000 }}
 					style="background-color: {gameLogic.CurrentColor?.hex};"
 				></div>
 			{/if}
@@ -68,5 +70,14 @@
 {/if}
 
 {#if gameLogic.Colors.filter((x) => !x.checked).length == 0 && gameLogic.State == GameState.Guessing}
-	<Modal open={true} onClose={() => NextRound()} />
+	{@debug NextRound}
+	<Modal
+		open={true}
+		onClose={null}
+		onMenu={() => goto(resolve('/'))}
+		onRestart={startGame}
+		onNextLevel={NextRound}
+		bind:Score={gameLogic.GetScore}
+		bind:Quesses={gameLogic.Colors.length}
+	/>
 {/if}

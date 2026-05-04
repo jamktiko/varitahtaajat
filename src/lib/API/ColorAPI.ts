@@ -100,6 +100,8 @@ export class ColorAPI {
 
 		const extratedData: ColorData[] = [];
 
+		console.log(rawData);
+
 		rawData.forEach((i) => {
 			extratedData.push(ExtractComponents(i));
 		});

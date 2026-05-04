@@ -18,7 +18,8 @@
 		{#each shuffle(Colors.filter((x) => !x.checked)) as color, i (color)}
 			<div
 				onclick={() => {
-					Quess.push(i);
+					const ci = Colors.indexOf(color);
+					Quess.push(ci);
 					color.checked = true;
 				}}
 				out:send={{ key: color.id }}

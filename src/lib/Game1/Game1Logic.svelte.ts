@@ -39,6 +39,7 @@ export class Game1 {
 
 	public resetGame() {
 		this.State = GameState.NotActive;
+		this.UserQuess = [];
 		this._colors = [];
 	}
 
@@ -50,7 +51,7 @@ export class Game1 {
 	public async PlayAnimationArrowAnimation(color: ColorData) {
 		this.AnimState = AnimState.start;
 		this.CurrentColor = color;
-		await delay(1000);
+		await delay(2000);
 		this.AnimState = AnimState.end;
 	}
 
@@ -63,9 +64,7 @@ export class Game1 {
 
 	public GetAccuracy: boolean[] = $derived(this.UserQuess.map((x, i) => x == i));
 
-	public GetScore(): number {
-		return this.GetAccuracy.map((x) => x as unknown as number).reduce((acc, val) => acc + val);
-	}
+	public GetScore: number = $derived(this.GetAccuracy.filter((x) => x).length);
 }
 
 function delay(ms: number) {

@@ -1,19 +1,39 @@
 <script>
 	import '$lib/muistipelistyles/tulosmodal.css';
-	let { open, onClose } = $props();
+	let {
+		open,
+		onClose,
+		onRestart,
+		onMenu,
+		onNextLevel,
+		Score = $bindable(),
+		Quesses = $bindable()
+	} = $props();
 
 	function Close() {
-		open = false;
 		if (onClose != null) {
+			open = false;
 			onClose();
 		}
 	}
 
-	function Restart() {}
+	function Restart() {
+		if (onRestart != null) {
+			onRestart();
+		}
+	}
 
-	function Menu() {}
+	function Menu() {
+		if (onMenu != null) {
+			onMenu();
+		}
+	}
 
-	function NextLevel() {}
+	function NextLevel() {
+		if (onNextLevel != null) {
+			onNextLevel();
+		}
+	}
 </script>
 
 {#if open}
@@ -22,7 +42,7 @@
 	<div class="modal">
 		<div class="content">
 			<div class="pointympyra">
-				<div class="pointit jersey-10-regular">6/10</div>
+				<div class="pointit jersey-10-regular">{Score}/{Quesses}</div>
 			</div>
 			<div class="motivaatioteksti jersey-10-regular">Not bad. Try it again!</div>
 			<button class="nappulanextlevel" onclick={NextLevel}>
