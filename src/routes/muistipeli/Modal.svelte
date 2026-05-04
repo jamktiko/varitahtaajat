@@ -1,5 +1,5 @@
 <script>
-	let { open, onClose, children } = $props();
+	let { open, onClose } = $props();
 
 	function Close() {
 		open = false;
@@ -10,7 +10,7 @@
 </script>
 
 {#if open}
-	<button class="backdrop" aria-label="Close modal" onclick={onClose}> </button>
+	<button class="backdrop" aria-label="Close modal" onclick={Close}> </button>
 	<link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 	<div class="modal">
 		<div class="content">

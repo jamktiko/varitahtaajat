@@ -1,18 +1,31 @@
-<script>
+<script lang="ts">
+	import { send } from '$lib/animations/ColorBoxQuess';
+	import type { ColorData } from '$lib/API/ColorAPI';
 	import '$lib/muistipelistyles/varivalinta.css';
+	import { shuffle } from '$lib/Shuffle';
+	import { flip } from 'svelte/animate';
+
+	interface Props {
+		Colors: ColorData[];
+		Quess: number[];
+	}
+
+	let { Colors, Quess = $bindable() }: Props = $props();
 </script>
 
 <div class="container_varivalinta">
 	<div class="grid_varivalinta">
-		<div class="cell_varivalinta red"></div>
-		<div class="cell_varivalinta orange"></div>
-		<div class="cell_varivalinta yellow"></div>
-		<div class="cell_varivalinta green"></div>
-		<div class="cell_varivalinta blue"></div>
-		<div class="cell_varivalinta white"></div>
-		<div class="cell_varivalinta black"></div>
-		<div class="cell_varivalinta violet"></div>
-		<div class="cell_varivalinta pink"></div>
-		<div class="cell_varivalinta brown"></div>
+		{#each shuffle(Colors.filter((x) => !x.checked)) as color, i (color)}
+			<div
+				onclick={() => {
+					Quess.push(i);
+					color.checked = true;
+				}}
+				out:send={{ key: color.id }}
+				animate:flip
+				class="cell_varivalinta"
+				style="background-color: {color.hex};"
+			></div>
+		{/each}
 	</div>
 </div>

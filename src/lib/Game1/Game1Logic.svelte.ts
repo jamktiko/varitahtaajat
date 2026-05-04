@@ -2,7 +2,7 @@ import { ColorAPI, type ColorData } from '$lib/API/ColorAPI';
 
 type Difficulties = 'Easy' | 'Medium' | 'Hard';
 
-const difficultyLookup: Readonly<Record<Difficulties, number>> = {
+export const difficultyLookup: Readonly<Record<Difficulties, number>> = {
 	Easy: 2,
 	Medium: 3,
 	Hard: 4
@@ -12,7 +12,8 @@ export enum GameState {
 	NotActive,
 	Ready,
 	Showing,
-	Guessing
+	Guessing,
+	Results
 }
 
 export enum AnimState {
@@ -22,20 +23,18 @@ export enum AnimState {
 }
 
 export class Game1 {
-	public State: GameState = GameState.NotActive;
-	public AnimState: AnimState = AnimState.hidden;
-	public UserQuess: number[] = [];
-	public CurrentColor: ColorData | null = null;
+	public State: GameState = $state(GameState.NotActive);
+	public AnimState: AnimState = $state(AnimState.hidden);
+	public UserQuess: number[] = $state([]);
+	public CurrentColor: ColorData | null = $state(null);
 
-	private _colors: ColorData[] = [];
+	private _colors: ColorData[] = $state([]);
 	public get Colors(): ColorData[] {
 		return this._colors;
 	}
 	private _api: ColorAPI;
-	public difficulty: Difficulties;
-	public constructor(difficulty: Difficulties) {
+	public constructor() {
 		this._api = ColorAPI.getInstance();
-		this.difficulty = difficulty;
 	}
 
 	public resetGame() {
@@ -43,21 +42,15 @@ export class Game1 {
 		this._colors = [];
 	}
 
-	public async StartGame(colorAmount?: number) {
-		let gameDifficulty = difficultyLookup[this.difficulty];
-
-		if (colorAmount != undefined) {
-			gameDifficulty = colorAmount;
-		}
-
-		this._colors = await this._api.getRandomColorList(gameDifficulty);
+	public async StartGame(colorAmount: number) {
+		this._colors = await this._api.getRandomColorList(colorAmount);
 		this.State = GameState.Ready;
 	}
 
 	public async PlayAnimationArrowAnimation(color: ColorData) {
 		this.AnimState = AnimState.start;
 		this.CurrentColor = color;
-		await delay(100);
+		await delay(1000);
 		this.AnimState = AnimState.end;
 	}
 
@@ -65,13 +58,14 @@ export class Game1 {
 		for (const color of this._colors) {
 			await this.PlayAnimationArrowAnimation(color);
 		}
+		this.State = GameState.Guessing;
 	}
 
-	public GetAccuracy: boolean[] = this.UserQuess.map((x, i) => x == i);
+	public GetAccuracy: boolean[] = $derived(this.UserQuess.map((x, i) => x == i));
 
-	public GetScore: number = this.GetAccuracy.map((x) => x as unknown as number).reduce(
-		(acc, val) => acc + val
-	);
+	public GetScore(): number {
+		return this.GetAccuracy.map((x) => x as unknown as number).reduce((acc, val) => acc + val);
+	}
 }
 
 function delay(ms: number) {

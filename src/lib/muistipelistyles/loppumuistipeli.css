@@ -5,7 +5,8 @@ body {
 	height: 100%;
 }
 .containeri {
-	min-height: 100vh;
+	/* 	min-height: 100vh; */
+	padding-bottom: 5vh;
 	display: flex;
 	flex-direction: column;
 	justify-content: flex-start;
