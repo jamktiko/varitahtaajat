@@ -11,11 +11,11 @@
 .modal {
 	padding: 1rem;
 	position: fixed;
-	top: 10vh;
-	left: 10vw;
-	width: 500px;
-	height: 500px;
-	aspect-ratio: 1/1;
+	top: 15vh;
+	left: 50%;
+	transform: translateX(-50%);
+	width: clamp(300px, 15vw, 350px);
+	height: clamp(550px, 15vw, 600px);
 	border-radius: 10px;
 	background: #eeeeff;
 	z-index: 100;
@@ -35,23 +35,26 @@
 	height: 100px;
 	background: #1e1e1e;
 	border-radius: 50%;
-	margin-bottom: 1rem;
+	margin-bottom: 0.5rem;
+	margin-top: 1rem;
 }
 .pointit {
 	font-size: clamp(3rem, 2vw, 4rem);
+	color: #ffffff;
 }
 .motivaatioteksti {
 	font-size: clamp(3rem, 2vw, 4rem);
-	margin-bottom: 2rem;
+	margin-block: 2rem;
 	color: #1e1e1e;
+	text-align: center;
+	line-height: 1.1;
 }
 .nappulanextlevel,
 .nappularestart,
 .nappulamenu {
-	padding: 0.5rem 1rem;
 	margin: 0.5rem;
 	width: clamp(200px, 15vw, 250px);
-	height: clamp(40px, 10vw, 50px);
+	height: clamp(50px, 10vw, 60px);
 	background: #1e1e1e;
 	border: none;
 	border-radius: 5px;
@@ -71,14 +74,51 @@
 
 @media (min-width: 768px) {
 	.modal {
-		left: 25vw;
-		width: 50%;
+		left: 50%;
+		transform: translateX(-50%);
+		width: clamp(450px, 15vw, 550px);
+		height: clamp(550px, 15vw, 600px);
+	}
+	.motivaatioteksti {
+		font-size: clamp(3rem, 2vw, 4rem);
+		margin-bottom: 1rem;
+	}
+	.nappulanextlevel,
+	.nappularestart,
+	.nappulamenu {
+		margin: 0.5rem;
+		width: clamp(250px, 10vw, 300px);
+		height: clamp(60px, 10vw, 70px);
+	}
+	.nappulanextleveltx,
+	.nappularestarttx,
+	.nappulamenutx {
+		font-size: clamp(2.5rem, 3vw, 3.5rem);
 	}
 }
 
 @media (min-width: 1024px) {
 	.modal {
-		left: 30vw;
-		width: 40%;
+		top: 10vh;
+		left: 50%;
+		transform: translateX(-50%);
+		width: clamp(500px, 15vw, 600px);
+		height: clamp(550px, 15vw, 650px);
+	}
+	.motivaatioteksti {
+		font-size: clamp(3rem, 2vw, 4rem);
+		margin-bottom: 2rem;
+	}
+	.nappulanextlevel,
+	.nappularestart,
+	.nappulamenu {
+		margin: 0.5rem;
+		width: clamp(300px, 10vw, 350px);
+		height: clamp(55px, 10vw, 65px);
+	}
+	.nappulanextleveltx,
+	.nappularestarttx,
+	.nappulamenutx {
+		font-size: clamp(2.5rem, 3vw, 3rem);
 	}
 }
