@@ -27,10 +27,14 @@ interface HSLObject {
 }
 
 export interface ColorData extends RawColorData {
+	id: string;
+	checked: boolean;
 	RGBComponents: RGBObject;
 	HEXComponents: HEXObject;
 	HSLComponents: HSLObject;
 }
+
+import { v4 as uuid } from 'uuid';
 
 export class ColorAPI {
 	private readonly _endpoint: string = 'https://x-colors.yurace.pro/api/';
@@ -96,6 +100,8 @@ export class ColorAPI {
 
 		const extratedData: ColorData[] = [];
 
+		console.log(rawData);
+
 		rawData.forEach((i) => {
 			extratedData.push(ExtractComponents(i));
 		});
@@ -144,6 +150,8 @@ function ExtractComponents(data: RawColorData): ColorData {
 	}
 
 	return {
+		id: uuid(),
+		checked: false,
 		HEXComponents: Hex,
 		RGBComponents: RGB,
 		HSLComponents: HSL,

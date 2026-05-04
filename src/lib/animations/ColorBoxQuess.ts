@@ -33,7 +33,7 @@ export function flyNoDissolve(
 		delay,
 		duration,
 		easing,
-		css: (t: number, u: number) => `
+		css: (t: number) => `
 			transform: ${transform} translate(${(1 - t) * x_value}${x_unit}, ${(1 - t) * y_value}${y_unit});`
 	};
 }
