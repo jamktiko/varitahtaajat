@@ -1,4 +1,4 @@
-<script>
+<script lang="ts">
 	import '$lib/muistipelistyles/tulosmodal.css';
 	let {
 		open,
@@ -34,6 +34,23 @@
 			onNextLevel();
 		}
 	}
+
+	function GetScoreMessage(scorePrecentage: number): string {
+		if (scorePrecentage == 100) {
+			return 'Perfect';
+		}
+		if (scorePrecentage >= 67) {
+			return 'Almost there';
+		}
+		if (scorePrecentage >= 34) {
+			return 'Good';
+		}
+		if (scorePrecentage >= 1) {
+			return 'Not bad';
+		}
+
+		return 'Try again';
+	}
 </script>
 
 {#if open}
@@ -44,7 +61,9 @@
 			<div class="pointympyra">
 				<div class="pointit jersey-10-regular">{Score}/{Quesses}</div>
 			</div>
-			<div class="motivaatioteksti jersey-10-regular">Not bad. Try it again!</div>
+			<div class="motivaatioteksti jersey-10-regular">
+				{GetScoreMessage((Score / Quesses) * 100)}
+			</div>
 			<button class="nappulanextlevel" onclick={NextLevel}>
 				<div class="nappulanextleveltx jersey-10-regular">Next Level</div>
 			</button>
