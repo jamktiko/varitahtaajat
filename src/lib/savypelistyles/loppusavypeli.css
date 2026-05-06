@@ -1,0 +1,50 @@
+.sivu {
+  min-height: 100vh;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+}
+
+.kellopallo {
+  display: block;
+  background: rgb(236, 3, 3);
+  border-radius: 50%;
+  height: 350px;
+  width: 350px;
+  margin-bottom: 100px;
+}
+
+.savyteksti {
+  font-family: "Jersey 10", sans-serif;
+  font-weight: 400;
+  color: black;
+  text-align:center;
+  font-size: 70px;  
+}
+
+.savypeliteksti_container {
+  padding: 0px;
+  width: 100%;
+	display: flex;
+	justify-content: center;
+  align-items: center;
+}
+
+/* työpöytä */
+
+@media (min-width: 1024px) { 
+.kellopallo {
+  width: 500px;
+  height: 500px;
+}
+
+.savyteksti {
+  font-size: 100px;
+}
+}
+
+
+
+
+
