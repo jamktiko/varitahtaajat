@@ -2,8 +2,6 @@ html,
 body {
 	margin: 0;
 	padding: 0;
-	height: 100%;
-	overflow: hidden;
 }
 .notactive {
 	display: flex;
@@ -11,6 +9,7 @@ body {
 	align-items: center;
 	justify-content: center;
 	min-height: 100vh;
+	overflow: hidden;
 }
 .ohjekortti {
 	position: absolute;

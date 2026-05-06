@@ -1,0 +1,120 @@
+:global(html),
+:global(body) {
+	margin: 0;
+	padding: 0;
+}
+.pagekolmio {
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+	background-color: #d9d9d9;
+}
+.containerkolmio {
+	display: flex;
+	justify-content: flex-start;
+	align-items: center;
+	flex-direction: column;
+	gap: 20px;
+	padding: 10px 10px 4rem;
+	padding-top: 3rem;
+	box-sizing: border-box;
+	max-width: 100%;
+}
+.kolmioteksti1 {
+	position: static;
+	top: auto;
+	font-size: clamp(60px, 8vw, 70px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	overflow-wrap: break-word;
+	word-break: break-word;
+	line-height: 1;
+	text-align: center;
+}
+.playground {
+	position: static;
+	top: auto;
+	display: flex;
+	width: clamp(250px, 50vw, 300px);
+	height: clamp(250px, 50vw, 300px);
+	background-color: #ffffff;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 20px;
+	border-radius: 50%;
+}
+.spinnerkolmio {
+	width: 180px;
+	height: 155.88px;
+	position: relative;
+	margin-top: 15%;
+	/*animation-name: spin;
+	animation-duration: 5000ms;
+	animation-iteration-count: infinite;
+	animation-timing-function: linear;
+}
+
+@keyframes spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}*/
+}
+
+.rgb-grid {
+	position: static;
+	top: auto;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: center;
+	gap: 1rem;
+}
+
+.rgb-card {
+	display: grid;
+	grid-template-rows: auto auto;
+	justify-items: center;
+}
+
+.rgb-letter {
+	font-size: 4rem;
+	font-weight: bold;
+}
+
+.rgb-box {
+	width: 90px;
+	height: 45px;
+	background: white;
+	border: 3px solid black;
+	border-radius: 8px;
+}
+.kolmiomainbutton {
+	margin-top: auto;
+	position: static;
+	width: clamp(280px, 20vw, 300px);
+	height: clamp(80px, 10vh, 100px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	z-index: 100;
+
+	border-radius: 12px;
+	border: none;
+	box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+	background: #1e1e1e;
+	color: white;
+	font-size: 4rem;
+	cursor: pointer;
+	transition:
+		transform 0.1s ease,
+		box-shadow 0.1s ease;
+}
+.kolmiomainbutton:active {
+	transform: scale(0.95);
+	box-shadow: 0 2px 0 #000;
+}
