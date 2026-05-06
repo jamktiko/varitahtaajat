@@ -65,12 +65,11 @@
 {/if}
 
 {#if gameLogic.State == GameState.Guessing}
-	<Loppumuistipeli Colors={gameLogic.Colors}></Loppumuistipeli>
-	<Varivalinta Colors={gameLogic.Colors} bind:Quess={gameLogic.UserQuess} />
+	<Loppumuistipeli bind:Colors={gameLogic.Colors}></Loppumuistipeli>
+	<Varivalinta bind:Colors={gameLogic.Colors} bind:Quess={gameLogic.UserQuess} />
 {/if}
 
 {#if gameLogic.Colors.filter((x) => !x.checked).length == 0 && gameLogic.State == GameState.Guessing}
-	{@debug NextRound}
 	<Modal
 		open={true}
 		onClose={null}
