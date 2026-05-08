@@ -11,15 +11,14 @@
 	background-color: #d9d9d9;
 }
 .containerkolmio {
-	display: flex;
-	justify-content: flex-start;
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
 	align-items: center;
-	flex-direction: column;
-	gap: 20px;
-	padding: 10px 10px 4rem;
-	padding-top: 3rem;
+	gap: 10px;
+	padding: 40px;
 	box-sizing: border-box;
-	max-width: 100%;
 }
 .kolmioteksti1 {
 	position: static;
@@ -29,6 +28,15 @@
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 	overflow-wrap: break-word;
 	word-break: break-word;
+	line-height: 1;
+	text-align: center;
+}
+.percentit {
+	position: static;
+	top: auto;
+	font-size: clamp(60px, 8vw, 70px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
 	line-height: 1;
 	text-align: center;
 }
@@ -117,4 +125,84 @@
 .kolmiomainbutton:active {
 	transform: scale(0.95);
 	box-shadow: 0 2px 0 #000;
+}
+/* ===== TABLET ===== */
+
+/* ===== LAPTOP ===== */
+@media (min-width: 1024px) {
+	.containerkolmio {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			'circle title'
+			'circle text'
+			'percent input'
+			'percent button';
+		column-gap: clamp(80px, 10vw, 120px);
+		row-gap: 20px;
+	}
+	.playground {
+		grid-area: circle;
+		justify-self: center;
+		width: clamp(300px, 50vw, 350px);
+		height: clamp(300px, 50vw, 350px);
+		transform: translateY(50px);
+	}
+	.spinnerkolmio {
+		width: 250px;
+		height: 216.5px;
+		margin-top: 15%;
+	}
+
+	.percentit {
+		grid-area: percent;
+		justify-self: center;
+		font-size: clamp(90px, 15vw, 100px);
+		transform: translateY(-100px);
+	}
+
+	.kolmioteksti1 {
+		grid-area: title;
+		justify-self: start;
+		font-size: clamp(90px, 15vw, 100px);
+		transform: translateY(100px);
+	}
+	.rgb-grid {
+		grid-area: input;
+		justify-self: start;
+
+		display: flex;
+		gap: 20px;
+		align-items: flex-start;
+		transform: translateY(-120px);
+	}
+
+	.rgb-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.rgb-letter {
+		font-size: clamp(90px, 15vw, 100px);
+		line-height: 0.8;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.rgb-box {
+		width: 120px;
+		height: 60px;
+	}
+
+	.kolmiomainbutton {
+		grid-area: button;
+		justify-self: start;
+		width: clamp(380px, 20vw, 400px);
+		height: clamp(120px, 10vh, 150px);
+		transform: translateY(-120px);
+		font-size: 5rem;
+	}
+	.kolmiomainbutton:active {
+		transform: translateY(-114px);
+	}
 }
