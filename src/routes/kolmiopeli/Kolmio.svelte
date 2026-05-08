@@ -7,6 +7,7 @@
 	<div class="containerkolmio">
 		<div class="jersey-10-regular kolmioteksti1">Press Start</div>
 		<div class="jersey-10-regular percentit">70%</div>
+
 		<div class="playground">
 			<svg
 				class="spinnerkolmio"
