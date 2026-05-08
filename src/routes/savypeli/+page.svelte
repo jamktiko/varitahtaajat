@@ -6,7 +6,6 @@
 	import Loppusavypeli from './Loppusavypeli.svelte';
 	import Savyvalinta from './Savyvalinta.svelte';
 	import { ColorAPI } from '$lib/API/ColorAPI';
-	import modal from '../modal/Modal.svelte';
 	import Modal from '../modal/Modal.svelte';
 	
 	const api = ColorAPI.getInstance();
