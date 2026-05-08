@@ -11,7 +11,7 @@
 		href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined"
 		rel="stylesheet"
 	/>
-	<div class="container">
+	<div class="container-korjaus container">
 		<div class="circle">
 			<a href={resolve('/valikkosivu')} class="jersey-10-regular incircle">Väripeli</a>
 		</div>

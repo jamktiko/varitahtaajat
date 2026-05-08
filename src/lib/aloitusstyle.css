@@ -182,6 +182,11 @@ body {
 	}
 }
 
+.container-korjaus {
+	width: 100% !important;
+	max-width: unset !important;
+}
+
 /* ===== LAPTOP ===== */
 @media (min-width: 1024px) {
 	.page {
