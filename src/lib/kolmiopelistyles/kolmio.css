@@ -8,7 +8,8 @@
 	justify-content: center;
 	min-height: 100vh;
 	overflow-x: hidden;
-	background-color: #d9d9d9;
+
+	transition: background-color 0.5s ease;
 }
 .containerkolmio {
 	min-height: 100vh;
@@ -58,19 +59,26 @@
 	height: 155.88px;
 	position: relative;
 	margin-top: 15%;
-	/*animation-name: spin;
-	animation-duration: 5000ms;
-	animation-iteration-count: infinite;
-	animation-timing-function: linear;
+	width: clamp(170px, 50vw, 220px);
+	height: clamp(170px, 50vw, 220px);
+	overflow: visible;
 }
 
-@keyframes spin {
+.triangle-rotator {
+	transform-origin: 101px 59px;
+}
+
+.triangle-rotator.spinning {
+	animation: kolmioSpin 2s ease-out forwards;
+}
+
+@keyframes kolmioSpin {
 	from {
 		transform: rotate(0deg);
 	}
 	to {
-		transform: rotate(360deg);
-	}*/
+		transform: rotate(1080deg);
+	}
 }
 
 .rgb-grid {
@@ -99,6 +107,21 @@
 	background: white;
 	border: 3px solid black;
 	border-radius: 8px;
+
+	text-align: center;
+	font-size: 1.8rem;
+	color: black;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.rgb-box:focus {
+	border-color: #f42b03;
+}
+.rgb-box::-webkit-outer-spin-button,
+.rgb-box::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
 }
 .kolmiomainbutton {
 	margin-top: auto;
@@ -125,6 +148,13 @@
 .kolmiomainbutton:active {
 	transform: scale(0.95);
 	box-shadow: 0 2px 0 #000;
+}
+.kolmiomainbutton:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+.triangle-rotator path {
+	fill: var(--triangle-color);
 }
 /* ===== TABLET ===== */
 
