@@ -105,11 +105,20 @@
 
 	/*Background change*/
 	let currentColor = $state<ColorData | null>(null);
+
+	import { resolve } from '$app/paths';
 </script>
 
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios_new"
+/>
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 <div class="pagekolmio" style:background-color={pageColor}>
 	<div class="containerkolmio">
+		<a href={resolve('/')} class="pallo">
+			<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
+		</a>
 		<div class="jersey-10-regular kolmioteksti1">
 			{resultText || 'Press Start'}
 		</div>
