@@ -136,6 +136,8 @@
 <!-- <Loppusavypeli> </Loppusavypeli>  -->
 <!-- <Savyvalinta> </Savyvalinta> -->
 
+<link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
+
 {#if currentPage === 'aloita'}
 	<div class="notactive">
 		<div class="ohjekortti">
