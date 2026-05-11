@@ -1,0 +1,111 @@
+html,
+body {
+	margin: 0;
+	padding: 0;
+	height: 100%;
+	overflow: hidden;
+}
+.notactive {
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	min-height: 100vh;
+}
+.ohjekortti {
+	position: absolute;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	top: 8%;
+	width: clamp(250px, 30vw, 400px);
+	min-height: clamp(350px, 30vh, 500px);
+	height: auto;
+	padding: 20px;
+	border-radius: 5px;
+	background: linear-gradient(
+		148deg,
+		#ffbe0b 10.79%,
+		#fb5607 29.09%,
+		#ff006e 54.36%,
+		#8338ec 70.91%,
+		#3a86ff 93.57%
+	);
+	box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+	text-align: center;
+	border-radius: 5px;
+}
+.ohjeteksti {
+	font-size: clamp(43px, 8vw, 70px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	overflow-wrap: break-word;
+	word-break: break-word;
+	line-height: 1;
+}
+.aloita {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	position: absolute;
+	top: 78%;
+	width: clamp(250px, 20vw, 300px);
+	height: clamp(70px, 15vh, 100px);
+	background-color: #8338ec;
+	border-radius: 5px;
+	box-shadow: 0 6px 12px rgba(0, 0, 0, 0.3);
+}
+
+.aloita:active {
+	box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+	transform: translateY(2px);
+}
+.aloitateksti {
+	font-size: clamp(60px, 15vw, 80px);
+	color: white;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+}
+
+.jersey-10-regular {
+	font-family: 'Jersey 10', sans-serif;
+	font-weight: 500;
+	font-style: normal;
+}
+/* ===== TABLET ===== */
+@media (min-width: 768px) and (max-width: 1023px) {
+	.ohjekortti {
+		width: clamp(600px, 25vw, 700px);
+		min-height: clamp(400px, 30vh, 500px);
+	}
+	.ohjeteksti {
+		font-size: clamp(60px, 10vw, 70px);
+	}
+	.aloita {
+		width: clamp(300px, 25vw, 400px);
+		height: clamp(100px, 15vh, 150px);
+		top: 75%;
+	}
+	.aloitateksti {
+		font-size: clamp(60px, 15vw, 80px);
+	}
+}
+
+/* ===== LAPTOP ===== */
+@media (min-width: 1024px) {
+	.ohjekortti {
+		width: clamp(600px, 30vw, 800px);
+		min-height: clamp(400px, 30vh, 500px);
+	}
+	.ohjeteksti {
+		font-size: clamp(70px, 10vw, 80px);
+	}
+	.aloita {
+		width: clamp(300px, 25vw, 400px);
+		height: clamp(100px, 15vh, 150px);
+		top: 75%;
+	}
+	.aloitateksti {
+		font-size: clamp(60px, 15vw, 80px);
+	}
+}

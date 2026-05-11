@@ -12,11 +12,15 @@
 	import Aloita from './Aloita.svelte';
 	import Loppumuistipeli from './Loppumuistipeli.svelte';
 	import Varivalinta from './Varivalinta.svelte';
+	import ScoreStore, { type Scores } from '$lib/LocalStore/LocalStore.svelte';
 	import { goto } from '$app/navigation';
 	import { resolve } from '$app/paths';
+	import { onDestroy } from 'svelte';
+
+	let ScoreStoreState: Scores | undefined = $state();
 
 	const isTabletOrBiggerMQ = new MediaQuery('min-width: 768px');
-
+	const scoreStoreUnsub = ScoreStore.subscribe((x) => (ScoreStoreState = x));
 	let rounds: number = $state(2);
 
 	async function startGame() {
@@ -32,6 +36,21 @@
 		rounds += 1;
 		await startGame();
 	}
+
+	function exit() {
+		if (ScoreStoreState != undefined) {
+			let game1Scores = ScoreStoreState?.Game1;
+			game1Scores?.push({ Score: rounds, Time: Date.now() });
+			ScoreStore.set({ Game1: game1Scores });
+		}
+		goto(resolve('/'));
+	}
+
+	onDestroy(() => {
+		if (scoreStoreUnsub) {
+			scoreStoreUnsub();
+		}
+	});
 	$inspect(gameLogic.State);
 	$inspect(gameLogic.AnimState);
 </script>
@@ -65,16 +84,15 @@
 {/if}
 
 {#if gameLogic.State == GameState.Guessing}
-	<Loppumuistipeli Colors={gameLogic.Colors}></Loppumuistipeli>
-	<Varivalinta Colors={gameLogic.Colors} bind:Quess={gameLogic.UserQuess} />
+	<Loppumuistipeli bind:Colors={gameLogic.Colors}></Loppumuistipeli>
+	<Varivalinta bind:Colors={gameLogic.Colors} bind:Quess={gameLogic.UserQuess} />
 {/if}
 
 {#if gameLogic.Colors.filter((x) => !x.checked).length == 0 && gameLogic.State == GameState.Guessing}
-	{@debug NextRound}
 	<Modal
 		open={true}
 		onClose={null}
-		onMenu={() => goto(resolve('/'))}
+		onMenu={exit}
 		onRestart={startGame}
 		onNextLevel={NextRound}
 		bind:Score={gameLogic.GetScore}

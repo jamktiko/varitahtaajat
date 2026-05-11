@@ -168,18 +168,11 @@ body {
 		height: clamp(320px, 20vw, 500px);
 		font-size: clamp(50px, 20vw, 100px);
 	}
-	.ympyra1 {
-	}
-	.ympyra2 {
-	}
-	.ympyra3-1 {
-	}
-	.ympyra3-2 {
-	}
-	.ympyra4-1 {
-	}
-	.ympyra4-2 {
-	}
+}
+
+.container-korjaus {
+	width: 100% !important;
+	max-width: unset !important;
 }
 
 /* ===== LAPTOP ===== */
@@ -240,7 +233,21 @@ body {
 		display: none;
 	}
 	.ympyra3-1 {
-		display: none;
+		top: auto;
+		left: 24px;
+		bottom: 24px;
+	}
+	.material-symbols-outlined {
+		font-family: 'Material Symbols Outlined';
+		font-variation-settings:
+			'FILL' 0,
+			'wght' 400,
+			'GRAD' 0,
+			'opsz' 40;
+	}
+
+	.icon-1 {
+		color: #000000;
 	}
 	.ympyra3-2 {
 		display: none;
