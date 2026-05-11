@@ -1,6 +1,20 @@
 <script lang="ts">
 	import '$lib/leaderboardsstyle.css';
-	const leaderboardBlocks = [
+
+	import ScoreStore, { type Scores } from '$lib/LocalStore/LocalStore.svelte';
+	import { onDestroy, onMount } from 'svelte';
+
+	let ScoreStoreState: Scores | undefined = $state();
+	const scoreStoreUnsub = ScoreStore.subscribe((x) => (ScoreStoreState = x));
+
+	interface LeaderboardEntry {
+		id: number;
+		color: string;
+		points: number;
+		date: string;
+	}
+
+	const leaderboardBlocks: LeaderboardEntry[] = [
 		{ id: 1, color: '#FEF001', points: 16, date: '00:00 01.06.26' },
 		{ id: 2, color: '#FFCE03', points: 12, date: '00:00 02.06.26' },
 		{ id: 3, color: '#FD9A01', points: 10, date: '00:00 03.06.26' },
@@ -12,13 +26,38 @@
 		{ id: 9, color: '#3C50B1', points: 1, date: '00:00 09.06.26' },
 		{ id: 10, color: '#3A86FF', points: 1, date: '00:00 10.06.26' }
 	];
+
+	const leaderboardEntries: LeaderboardEntry[] = $state([]);
+
+	onMount(() => {
+		if (ScoreStoreState != undefined) {
+			const scoresList = ScoreStoreState.Game1.slice(0, 10);
+
+			for (let i = 0; i < scoresList.length; i++) {
+				const leaderboardEntry = leaderboardBlocks[i];
+
+				leaderboardEntry.points = scoresList[i].Score;
+				const date = new Date(scoresList[i].Time);
+				leaderboardEntry.date = `${date.toTimeString()} ${date.getDay()}.${date.getMonth()}.${date.getFullYear() - 2000}`;
+				leaderboardEntries.push(leaderboardEntry);
+			}
+		}
+	});
+
+	onDestroy(() => {
+		if (scoreStoreUnsub) {
+			scoreStoreUnsub();
+		}
+	});
+
+	$inspect(ScoreStoreState);
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 <div class="leaderboard-container">
 	<h1 class="leaderteksti1 jersey-10-regular">Leaderboards</h1>
 	<div class="leaderboard-list">
-		{#each leaderboardBlocks as block (block.id)}
+		{#each leaderboardEntries as block (block.id)}
 			<div class="leaderboard" style:background-color={block.color}>
 				<div class="leaderboard-date jersey-10-regular">{block.date}</div>
 				<div class="leaderboard-number jersey-10-regular">{block.points}</div>
