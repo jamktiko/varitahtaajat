@@ -1,13 +1,12 @@
 .valikko {
   width: 100%;
-  max-width: 403px;
   height: 100vh;
-  background-color: rgb(255, 255, 255);
   display: flex;
   flex-direction: column;
   justify-content: space-evenly ;
   padding: 20px;
   margin: 0 auto;
+  background: linear-gradient(311deg, #FFBE0B 13.63%, #FB5607 32.86%, #FF006E 53.62%, #8338EC 67.36%, #3A86FF 86.37%), #FFF;
 }
 
 .button:active {
@@ -21,7 +20,7 @@
   padding-bottom: 70px;
   border-radius: 25px;
   filter: drop-shadow(10px 5px 3px #0000006c);
-  border: 3px solid #0B0B0B;
+  border: 4px solid #0B0B0B;
   text-align: center;
   align-items: center;
   justify-content: center;
@@ -76,14 +75,12 @@
 @media (min-width: 1024px) {
   .valikko {
     flex-direction: row;
-    max-width: 1400px;
     gap: 30px;
     height: 100vh;
     margin-top: 0;
     position: relative;
     align-items: flex-end;
     padding-bottom: 50px;
-    overflow: visible;
   }
 
   .pallo {
@@ -98,5 +95,8 @@
     flex: 1;
     padding-top: 0;
     padding-bottom: 0;
+  }
+  .teksti{
+    font-size:70px ;
   }
 }

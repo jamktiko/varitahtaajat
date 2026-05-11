@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { send } from '$lib/animations/ColorBoxQuess';
+	import { receive, send } from '$lib/animations/ColorBoxQuess';
 	import type { ColorData } from '$lib/API/ColorAPI';
 	import '$lib/muistipelistyles/varivalinta.css';
 	import { shuffle } from '$lib/Shuffle';
@@ -10,7 +10,7 @@
 		Quess: number[];
 	}
 
-	let { Colors, Quess = $bindable() }: Props = $props();
+	let { Colors = $bindable(), Quess = $bindable() }: Props = $props();
 </script>
 
 <div class="container_varivalinta">
@@ -23,6 +23,7 @@
 					color.checked = true;
 				}}
 				out:send={{ key: color.id }}
+				in:receive={{ key: color.id }}
 				animate:flip
 				class="cell_varivalinta"
 				style="background-color: {color.hex};"

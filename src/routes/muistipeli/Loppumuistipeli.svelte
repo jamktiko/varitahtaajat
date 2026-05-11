@@ -1,5 +1,5 @@
 <script lang="ts">
-	import { receive } from '$lib/animations/ColorBoxQuess';
+	import { receive, send } from '$lib/animations/ColorBoxQuess';
 	import type { ColorData } from '$lib/API/ColorAPI';
 	import '$lib/muistipelistyles/loppumuistipeli.css';
 	import { flip } from 'svelte/animate';
@@ -7,17 +7,22 @@
 		Colors: ColorData[];
 	}
 
-	let { Colors }: Props = $props();
+	let { Colors = $bindable() }: Props = $props();
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 <div class="containeri">
 	<div class="grid">
-		{#each Colors.filter((x) => x.checked) as color (color)}
+		{#each Colors.filter((x) => x.checked) as color, i (color)}
 			<div
+				onclick={() => {
+					console.log(Colors.indexOf(color));
+					Colors[Colors.indexOf(color)].checked = false;
+				}}
 				class="cell_varivalinta"
 				style="background-color: {color.hex} !important;"
 				in:receive={{ key: color.id }}
+				out:send={{ key: color.id }}
 				animate:flip
 			></div>
 		{/each}
