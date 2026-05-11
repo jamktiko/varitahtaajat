@@ -17,7 +17,7 @@
         arrow_back_ios
     </span>
 </a>
-
+    
 
     <header class="otsikko">
         <h1>INFO</h1>
@@ -56,7 +56,8 @@
             <h3>Toteutuksessa hyödynnetyt teknologiat</h3>
             <ul>
                 <li> Visual Studio Code / Svelte </li> 
-                <li> TypeScript </li> 
+                <li> TypeScript </li>
+                <li> Html/CSS </li> 
                 <li> Figma </li> 
                 <li> Vercel </li>
                 <li> Trello </li> 
