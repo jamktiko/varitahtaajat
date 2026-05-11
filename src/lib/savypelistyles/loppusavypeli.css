@@ -7,12 +7,21 @@
 }
 
 .kellopallo {
-  display: block;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
   background: rgb(236, 3, 3);
   border-radius: 50%;
   height: 350px;
   width: 350px;
   margin-bottom: 100px;
+}
+
+.timer {
+  font-family: "Jersey 10", sans-serif;
+  font-size: 100px;
+  margin: 0;
 }
 
 .savyteksti {
@@ -27,8 +36,10 @@
   padding: 0px;
   width: 100%;
 	display: flex;
+  flex-direction: column;
 	justify-content: center;
   align-items: center;
+  gap: 20px;
 }
 
 /* työpöytä */

@@ -19,8 +19,7 @@
 		<div class="ympyra1"></div>
 		<div class="ympyra2"></div>
 		<button class="ympyra3-1"><span class="material-symbols-outlined icon-1">info</span></button>
-		<button class="ympyra3-2"><span class="material-symbols-outlined icon-2">settings</span></button
-		>
+		<button class="ympyra3-2"><span class="material-symbols-outlined icon-2">settings</span></button>
 		<div class="ympyra4-1"></div>
 		<div class="ympyra4-2"></div>
 	</div>
