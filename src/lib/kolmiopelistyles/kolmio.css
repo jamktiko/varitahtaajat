@@ -1,0 +1,265 @@
+:global(html),
+:global(body) {
+	margin: 0;
+	padding: 0;
+}
+.pagekolmio {
+	display: flex;
+	justify-content: center;
+	min-height: 100vh;
+	overflow-x: hidden;
+
+	transition: background-color 0.5s ease;
+}
+.containerkolmio {
+	min-height: 100vh;
+	display: grid;
+	grid-template-columns: 1fr;
+	justify-items: center;
+	align-items: center;
+	gap: 10px;
+	padding: 40px;
+	box-sizing: border-box;
+}
+.kolmioteksti1 {
+	position: static;
+	top: auto;
+	font-size: clamp(60px, 8vw, 70px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	overflow-wrap: break-word;
+	word-break: break-word;
+	line-height: 1;
+	text-align: center;
+}
+.percentit {
+	position: static;
+	top: auto;
+	font-size: clamp(60px, 8vw, 70px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	line-height: 1;
+	text-align: center;
+}
+.playground {
+	position: static;
+	top: auto;
+	display: flex;
+	width: clamp(250px, 50vw, 300px);
+	height: clamp(250px, 50vw, 300px);
+	background-color: #ffffff;
+	justify-content: center;
+	align-items: center;
+	flex-direction: column;
+	gap: 20px;
+	border-radius: 50%;
+}
+.spinnerkolmio {
+	width: 180px;
+	height: 155.88px;
+	position: relative;
+	margin-top: 15%;
+	width: clamp(170px, 50vw, 220px);
+	height: clamp(170px, 50vw, 220px);
+	overflow: visible;
+}
+
+.triangle-rotator {
+	transform-origin: 101px 59px;
+}
+
+.triangle-rotator.spinning {
+	animation: kolmioSpin 2s ease-out forwards;
+}
+
+@keyframes kolmioSpin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(1080deg);
+	}
+}
+
+.rgb-grid {
+	position: static;
+	top: auto;
+	display: grid;
+	grid-template-columns: repeat(3, auto);
+	justify-content: center;
+	gap: 1rem;
+}
+
+.rgb-card {
+	display: grid;
+	grid-template-rows: auto auto;
+	justify-items: center;
+}
+
+.rgb-letter {
+	font-size: 4rem;
+	font-weight: bold;
+}
+
+.rgb-box {
+	width: 90px;
+	height: 45px;
+	background: white;
+	border: 3px solid black;
+	border-radius: 8px;
+
+	text-align: center;
+	font-size: 1.8rem;
+	color: black;
+	outline: none;
+	box-sizing: border-box;
+}
+
+.rgb-box:focus {
+	border-color: #f42b03;
+}
+.rgb-box::-webkit-outer-spin-button,
+.rgb-box::-webkit-inner-spin-button {
+	-webkit-appearance: none;
+	margin: 0;
+}
+.kolmiomainbutton {
+	margin-top: auto;
+	position: static;
+	width: clamp(280px, 20vw, 300px);
+	height: clamp(80px, 10vh, 100px);
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	text-align: center;
+	z-index: 100;
+
+	border-radius: 12px;
+	border: none;
+	box-shadow: 0 8px 8px rgba(0, 0, 0, 0.2);
+	background: #1e1e1e;
+	color: white;
+	font-size: 4rem;
+	cursor: pointer;
+	transition:
+		transform 0.1s ease,
+		box-shadow 0.1s ease;
+}
+.kolmiomainbutton:active {
+	transform: scale(0.95);
+	box-shadow: 0 2px 0 #000;
+}
+.kolmiomainbutton:disabled {
+	opacity: 0.6;
+	cursor: not-allowed;
+}
+.triangle-rotator path {
+	fill: var(--triangle-color);
+}
+
+.pallo {
+	justify-self: start;
+	align-self: start;
+
+	display: flex;
+	justify-content: center;
+	align-items: center;
+
+	height: 56px;
+	width: 56px;
+	padding: 4px;
+	border-radius: 100px;
+	background-color: black;
+}
+
+.nuoli {
+	color: white;
+	font-size: 25px;
+	user-select: none;
+	margin-right: 4px;
+	font-variation-settings:
+		'FILL' 0,
+		'wght' 400,
+		'GRAD' 0,
+		'opsz' 24;
+}
+/* ===== TABLET ===== */
+
+/* ===== LAPTOP ===== */
+@media (min-width: 1024px) {
+	.containerkolmio {
+		grid-template-columns: 1fr 1fr;
+		grid-template-areas:
+			'circle title'
+			'circle text'
+			'percent input'
+			'percent button';
+		column-gap: clamp(80px, 10vw, 120px);
+		row-gap: 20px;
+	}
+	.playground {
+		grid-area: circle;
+		justify-self: center;
+		width: clamp(300px, 50vw, 350px);
+		height: clamp(300px, 50vw, 350px);
+		transform: translateY(50px);
+	}
+	.spinnerkolmio {
+		width: 250px;
+		height: 216.5px;
+		margin-top: 15%;
+	}
+
+	.percentit {
+		grid-area: percent;
+		justify-self: center;
+		font-size: clamp(90px, 15vw, 100px);
+		transform: translateY(-100px);
+	}
+
+	.kolmioteksti1 {
+		grid-area: title;
+		justify-self: start;
+		font-size: clamp(90px, 15vw, 100px);
+		transform: translateY(100px);
+	}
+	.rgb-grid {
+		grid-area: input;
+		justify-self: start;
+
+		display: flex;
+		gap: 20px;
+		align-items: flex-start;
+		transform: translateY(-120px);
+	}
+
+	.rgb-card {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+	}
+
+	.rgb-letter {
+		font-size: clamp(90px, 15vw, 100px);
+		line-height: 0.8;
+		margin-bottom: 10px;
+		text-align: center;
+	}
+
+	.rgb-box {
+		width: 120px;
+		height: 60px;
+	}
+
+	.kolmiomainbutton {
+		grid-area: button;
+		justify-self: start;
+		width: clamp(380px, 20vw, 400px);
+		height: clamp(120px, 10vh, 150px);
+		transform: translateY(-120px);
+		font-size: 5rem;
+	}
+	.kolmiomainbutton:active {
+		transform: translateY(-114px);
+	}
+}
