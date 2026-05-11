@@ -3,7 +3,11 @@
 	import '$lib/kolmiopelistyles/kolmio.css';
 	import Kolmiopeliohje from './Kolmiopeliohje.svelte';
 	import Kolmio from './Kolmio.svelte';
+	let showGuide = $state(true);
 </script>
 
-<!-- <Kolmiopeliohje></Kolmiopeliohje> -->
-<Kolmio></Kolmio>
+{#if showGuide}
+	<Kolmiopeliohje onStart={() => (showGuide = false)} />
+{:else}
+	<Kolmio onBack={() => (showGuide = true)} />
+{/if}

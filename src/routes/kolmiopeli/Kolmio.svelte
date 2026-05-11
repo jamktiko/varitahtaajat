@@ -1,6 +1,7 @@
 <script lang="ts">
 	import '$lib/kolmiopelistyles/kolmio.css';
 	import { ColorAPI, type ColorData } from '$lib/API/ColorAPI';
+	let { onBack } = $props();
 
 	let isSpinning = $state(false);
 	let gameState = $state<'start' | 'spinning' | 'guessing' | 'result'>('start');
@@ -105,8 +106,6 @@
 
 	/*Background change*/
 	let currentColor = $state<ColorData | null>(null);
-
-	import { resolve } from '$app/paths';
 </script>
 
 <link
@@ -116,9 +115,9 @@
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 <div class="pagekolmio" style:background-color={pageColor}>
 	<div class="containerkolmio">
-		<a href={resolve('/')} class="pallo">
+		<button onclick={onBack} class="pallo">
 			<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
-		</a>
+		</button>
 		<div class="jersey-10-regular kolmioteksti1">
 			{resultText || 'Press Start'}
 		</div>

@@ -1,5 +1,8 @@
 <script>
 	import '$lib/kolmiopelistyles/kolmiopeliohje.css';
+	import { goto } from '$app/navigation';
+	import { resolve } from '$app/paths';
+	let { onStart } = $props();
 </script>
 
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
@@ -7,7 +10,14 @@
 	href="https://fonts.googleapis.com/css2?family=Inclusive+Sans:ital,wght@0,300..700;1,300..700&family=Jersey+10&display=swap"
 	rel="stylesheet"
 />
+<link
+	rel="stylesheet"
+	href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@20..48,100..700,0..1,-50..200&icon_names=arrow_back_ios_new"
+/>
 <div class="pagekolmioohje">
+	<button onclick={() => goto(resolve('/valikkosivu'))} class="pallo">
+		<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
+	</button>
 	<div class="contentkolmioohje">
 		<div class="ohjetekstit">
 			<h1 class="ohjeteksti1 jersey-10-regular">How to play KolmioPeli</h1>
@@ -81,6 +91,6 @@
 				</p>
 			</div>
 		</div>
-		<button class="fixed-kolmiopelibutton jersey-10-regular"> Start </button>
+		<button onclick={onStart} class="fixed-kolmiopelibutton jersey-10-regular"> Start </button>
 	</div>
 </div>
