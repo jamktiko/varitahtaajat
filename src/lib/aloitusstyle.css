@@ -126,7 +126,7 @@
 	align-items: center;
 	bottom: 6%;
 	right: 8%;
-	background-color: #ffbe0b;
+	background-color: #fffb0b;
 }
 
 @keyframes kellunta {
@@ -196,6 +196,9 @@
 	100% {
 		transform: translate(0, 0);
 	}
+.fien-text {
+	font-size: clamp(30px, 10vw, 40px);
+	color: #000000;
 }
 /* ===== TABLET ===== */
 @media (min-width: 768px) {
@@ -373,6 +376,12 @@
 		left: 24px;
 		bottom: 24px;
 	}
+	.ympyra3-2 {
+		top: auto;
+		bottom: 24px;
+		right: 24px;
+	}
+
 	.material-symbols-outlined {
 		font-family: 'Material Symbols Outlined';
 		font-variation-settings:
@@ -381,17 +390,17 @@
 			'GRAD' 0,
 			'opsz' 40;
 	}
-
 	.icon-1 {
 		color: #000000;
-	}
-	.ympyra3-2 {
-		display: none;
 	}
 	.ympyra4-1 {
 		display: none;
 	}
 	.ympyra4-2 {
 		display: none;
+	}
+	.fien-text {
+		font-size: clamp(56px, 10vw, 72px);
+		color: #000000;
 	}
 }

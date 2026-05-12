@@ -23,7 +23,7 @@ Väri Tähtääjä
 Tekijät:
 
 - Arttu höylä
-- Mari Karhu
+- Maria Karhu
 - Eemeli Latva-aho
 - Rayimov Elyorbek
 
@@ -38,7 +38,7 @@ Verkkosivu jossa on 1-3 väri teemoisia haasteita
 | Nimi             | Vastuurooli                       |
 | ---------------- | --------------------------------- |
 | Arttu Höylä      | Git-päällikkö                     |
-| Mari Karhu       | Dokumentti-päällikkö              |
+| Maria Karhu      | Dokumentti-päällikkö              |
 | Eemeli Latva-aho | Tehtävä-päällikkö                 |
 | Rayimov Elyorbek | Julkaisu/laadunhallinta-päällikkö |
 

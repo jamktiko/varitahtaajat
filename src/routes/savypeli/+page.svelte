@@ -7,6 +7,10 @@
 	import Savyvalinta from './Savyvalinta.svelte';
 	import { ColorAPI } from '$lib/API/ColorAPI';
 	import Modal from './Modal.svelte';
+	import { translations } from '$lib/translations';
+	import { languageState } from '$lib/language.svelte';
+
+	let t = $derived(translations[languageState.language]);
 
 	const api = ColorAPI.getInstance();
 
@@ -142,17 +146,17 @@
 	<div class="notactive">
 		<div class="ohjekortti">
 			<h1 class="ohjeteksti jersey-10-regular">
-				Muista annettu väri ja valitse oikea sävy liukusäätimillä
+				{t.guidegame2Title}
 			</h1>
 		</div>
 		<button class="aloita" onclick={startGame}>
-			<p class="aloitateksti jersey-10-regular">Aloita</p>
+			<p class="aloitateksti jersey-10-regular">{t.start}</p>
 		</button>
 	</div>
 {:else if currentPage === 'sivu'}
 	<div class="sivu">
 		<div class="savypeliteksti_container">
-			<h1 class="savyteksti">Muista väri</h1>
+			<h1 class="savyteksti">{t.remember}</h1>
 
 			<div class="kellopallo" style="background-color: {currentColor};">
 				<div class="timer">{timer}</div>
@@ -162,7 +166,7 @@
 {:else if currentPage === 'containersavy'}
 	<div class="containersavy">
 		<div class="savyvalintateksti_container">
-			<h1 class="savyvalintateksti">Valitse oikea väri</h1>
+			<h1 class="savyvalintateksti">{t.chooseOrder}</h1>
 		</div>
 
 		<div class="varipallo" style="background-color: {userColor};"></div>
@@ -197,38 +201,16 @@
 			</button>
 
 			<div class="modal">
-				<Modal open={showModal} onClose={() => (showModal = false)}>
-					<div class="tulos">
-						<p>Sait {score} pistettä!</p>
-						<button
-							class="uusipeli"
-							onclick={() => {
-								showModal = false;
-								startGame();
-							}}>Pelaa uudestaan</button
-						>
-					</div>
-				</Modal>
+				<Modal
+					open={showModal}
+					onClose={() => (showModal = false)}
+					{score}
+					onRestart={() => {
+						showModal = false;
+						startGame();
+					}}
+				></Modal>
 			</div>
 		</div>
 	</div>
 {/if}
-
-<style>
-	.tulos {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.uusipeli {
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-		background-color: #3d25c8;
-		color: white;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
-</style>

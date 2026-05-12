@@ -3,6 +3,10 @@
 	import type { ColorData } from '$lib/API/ColorAPI';
 	import '$lib/muistipelistyles/loppumuistipeli.css';
 	import { flip } from 'svelte/animate';
+	import { translations } from '$lib/translations';
+	import { languageState } from '$lib/language.svelte';
+
+	let t = $derived(translations[languageState.language]);
 	interface Props {
 		Colors: ColorData[];
 	}
@@ -33,6 +37,6 @@
 		-->
 	</div>
 	<div class="varivalintateksti_container">
-		<h1 class="varivalintateksti jersey-10-regular">Valitse oikea järjestys</h1>
+		<h1 class="varivalintateksti jersey-10-regular">{t.chooseOrder}</h1>
 	</div>
 </div>
