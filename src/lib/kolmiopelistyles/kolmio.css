@@ -23,7 +23,7 @@
 }
 .kolmioteksti1 {
 	position: static;
-	top: auto;
+	margin-top: 5vh;
 	font-size: clamp(60px, 8vw, 70px);
 	color: black;
 	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
@@ -31,6 +31,27 @@
 	word-break: break-word;
 	line-height: 1;
 	text-align: center;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	gap: 0.5rem;
+}
+.result-text {
+	font-size: clamp(60px, 10vw, 96px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	line-height: 1;
+	text-align: center;
+}
+.press-start {
+	font-size: clamp(60px, 10vw, 96px);
+	color: black;
+	text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.3);
+	line-height: 1;
+	text-align: center;
+}
+.rgb-answer {
+	font-size: clamp(40px, 10vw, 60px);
 }
 .percentit {
 	position: static;
@@ -158,8 +179,9 @@
 }
 
 .pallo {
-	justify-self: start;
-	align-self: start;
+	position: absolute;
+	top: 1.5rem;
+	left: 1.5rem;
 
 	display: flex;
 	justify-content: center;
@@ -184,6 +206,7 @@
 		'opsz' 24;
 }
 /* ===== TABLET ===== */
+/*Everything looks good*/
 
 /* ===== LAPTOP ===== */
 @media (min-width: 1024px) {
@@ -214,14 +237,23 @@
 		grid-area: percent;
 		justify-self: center;
 		font-size: clamp(90px, 15vw, 100px);
-		transform: translateY(-100px);
+		transform: translateY(-50px);
 	}
-
 	.kolmioteksti1 {
-		grid-area: title;
-		justify-self: start;
 		font-size: clamp(90px, 15vw, 100px);
-		transform: translateY(100px);
+		text-align: center;
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: flex-start;
+		gap: 0.5rem;
+		margin-top: 10vh;
+	}
+	.result-text {
+		font-size: clamp(60px, 10vw, 96px);
+	}
+	.rgb-answer {
+		font-size: clamp(40px, 10vw, 60px);
 	}
 	.rgb-grid {
 		grid-area: input;
@@ -261,5 +293,15 @@
 	}
 	.kolmiomainbutton:active {
 		transform: translateY(-114px);
+	}
+	.pallo {
+		position: absolute;
+		top: 1.5rem;
+		left: 1.5rem;
+		height: 80px;
+		width: 80px;
+	}
+	.nuoli {
+		font-size: 35px;
 	}
 }

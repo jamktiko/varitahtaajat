@@ -11,7 +11,12 @@
 	let playerB = $state('');
 	let resultText = $state('');
 
+	let accuracy = $state<number | null>(null);
+
 	let pageColor = $state('#d9d9d9');
+	let correctR = $state(0);
+	let correctG = $state(0);
+	let correctB = $state(0);
 
 	const colorAPI = ColorAPI.getInstance();
 
@@ -53,9 +58,9 @@
 		const g = Number(playerG);
 		const b = Number(playerB);
 
-		const correctR = currentColor.RGBComponents.R;
-		const correctG = currentColor.RGBComponents.G;
-		const correctB = currentColor.RGBComponents.B;
+		correctR = currentColor.RGBComponents.R;
+		correctG = currentColor.RGBComponents.G;
+		correctB = currentColor.RGBComponents.B;
 
 		const differenceR = Math.abs(r - correctR);
 		const differenceG = Math.abs(g - correctG);
@@ -65,14 +70,35 @@
 
 		const maxDifference = 255 * 3;
 
-		const accuracy = Math.round(100 - (totalDifference / maxDifference) * 100);
+		accuracy = Math.round(100 - (totalDifference / maxDifference) * 100);
 
 		accuracyPercent = accuracy;
 
-		resultText = `${accuracy}% correct! RGB(${correctR}, ${correctG}, ${correctB})`;
 		pageColor = currentColor.hex;
 		gameState = 'result';
-	} /*RETRY*/
+
+		function getResultMessage(accuracy: number) {
+			if (accuracy === 100) {
+				return `You're genius!`;
+			}
+
+			if (accuracy >= 75) {
+				return `Great!`;
+			}
+
+			if (accuracy >= 50) {
+				return `Good try!`;
+			}
+
+			if (accuracy >= 25) {
+				return `Try harder!`;
+			}
+
+			return `Keep practicing!`;
+		}
+		resultText = `${getResultMessage(accuracy)}`;
+	}
+	/*RETRY*/
 	function retryGame() {
 		playerR = '';
 		playerG = '';
@@ -114,12 +140,17 @@
 />
 <link href="https://fonts.googleapis.com/css2?family=Jersey+10&display=swap" rel="stylesheet" />
 <div class="pagekolmio" style:background-color={pageColor}>
+	<button onclick={onBack} class="pallo">
+		<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
+	</button>
 	<div class="containerkolmio">
-		<button onclick={onBack} class="pallo">
-			<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
-		</button>
 		<div class="jersey-10-regular kolmioteksti1">
-			{resultText || 'Press Start'}
+			{#if resultText}
+				<div class="result-text">{resultText}</div>
+				<div class="rgb-answer">RGB({correctR}, {correctG}, {correctB})</div>
+			{:else}
+				<div class="press-start">Press Start</div>
+			{/if}
 		</div>
 		<div class="jersey-10-regular percentit">
 			{accuracyPercent !== null ? `${accuracyPercent}%` : '0%'}
