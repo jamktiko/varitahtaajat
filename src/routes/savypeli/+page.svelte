@@ -163,7 +163,7 @@
 			</div>
 		</div>
 	</div>
-{:else if currentPage === 'containersavy'}
+{:else if currentPage === 'containersavy' || currentPage === 'finale'}
 	<div class="containersavy">
 		<div class="savyvalintateksti_container">
 			<h1 class="savyvalintateksti">{t.chooseOrder}</h1>
@@ -199,18 +199,18 @@
 			<button class="vahvista" onclick={calculateScore}>
 				<p class="vahvistateksti jersey-10-regular">Tarkista</p>
 			</button>
-
-			<div class="modal">
-				<Modal
-					open={showModal}
-					onClose={() => (showModal = false)}
-					{score}
-					onRestart={() => {
-						showModal = false;
-						startGame();
-					}}
-				></Modal>
-			</div>
 		</div>
+	</div>
+
+	<div class="modal">
+		<Modal
+			open={showModal}
+			onClose={() => (showModal = false)}
+			{score}
+			onRestart={() => {
+				showModal = false;
+				startGame();
+			}}
+		></Modal>
 	</div>
 {/if}
