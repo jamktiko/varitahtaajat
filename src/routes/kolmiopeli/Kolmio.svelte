@@ -1,7 +1,7 @@
 <script lang="ts">
 	import '$lib/kolmiopelistyles/kolmio.css';
 	import { ColorAPI, type ColorData } from '$lib/API/ColorAPI';
-	import { translations } from '$lib/translations';
+	import { formatString, translations } from '$lib/translations';
 	import { languageState } from '$lib/language.svelte';
 
 	let t = $derived(translations[languageState.language]);
@@ -43,12 +43,12 @@
 	/*Typing input codes*/
 	function checkAnswer() {
 		if (!currentColor) {
-			resultText = 'Spin first!';
+			resultText = t.game3SpinFirst;
 			return;
 		}
 
 		if (playerR === '' || playerG === '' || playerB === '') {
-			resultText = 'Fill all RGB boxes!';
+			resultText = t.game3FillAll;
 			return;
 		}
 
@@ -72,7 +72,13 @@
 
 		accuracyPercent = accuracy;
 
-		resultText = `${accuracy}% correct! RGB(${correctR}, ${correctG}, ${correctB})`;
+		resultText = formatString(
+			t.game3Result,
+			accuracy.toString(),
+			correctR.toString(),
+			correctG.toString(),
+			correctB.toString()
+		);
 		pageColor = currentColor.hex;
 		gameState = 'result';
 	} /*RETRY*/

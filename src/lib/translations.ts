@@ -17,7 +17,10 @@ export const translations = {
 		resultPerfect: 'Olet genio!',
 		resultGreat: 'Hienoa!',
 		resultGood: 'Hyvä yritys!',
-		resultLow: 'Jatka harjoittelua!'
+		resultLow: 'Jatka harjoittelua!',
+		game3SpinFirst: 'Pyöritä ensin!',
+		game3FillAll: 'Täytä kaikki laatikot ensiksi!',
+		game3Result: '{0}% oikein! RGB({1}, {2}, {3})'
 	},
 
 	en: {
@@ -38,6 +41,16 @@ export const translations = {
 		resultPerfect: 'You are a genius!',
 		resultGreat: 'Great!',
 		resultGood: 'Good try!',
-		resultLow: 'Keep practicing!'
+		resultLow: 'Keep practicing!',
+		game3SpinFirst: 'Spin first!',
+		game3FillAll: 'Fill all RGB boxes!',
+		game3Result: '{0}% correct! RGB({1}, {2}, {3})'
 	}
 };
+
+//kopioitu https://www.geeksforgeeks.org/typescript/how-to-format-strings-in-typescript/
+export function formatString(template: string, ...args: string[]): string {
+	return template.replace(/{(\d+)}/g, (match, index) => {
+		return typeof args[index] !== 'undefined' ? args[index] : match;
+	});
+}
