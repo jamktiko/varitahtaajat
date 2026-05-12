@@ -197,38 +197,16 @@
 			</button>
 
 			<div class="modal">
-				<Modal open={showModal} onClose={() => (showModal = false)}>
-					<div class="tulos">
-						<p>Sait {score} pistettä!</p>
-						<button
-							class="uusipeli"
-							onclick={() => {
-								showModal = false;
-								startGame();
-							}}>Pelaa uudestaan</button
-						>
-					</div>
-				</Modal>
+				<Modal
+					open={showModal}
+					onClose={() => (showModal = false)}
+					{score}
+					onRestart={() => {
+						showModal = false;
+						startGame();
+					}}
+				></Modal>
 			</div>
 		</div>
 	</div>
 {/if}
-
-<style>
-	.tulos {
-		display: flex;
-		flex-direction: column;
-		align-items: center;
-		gap: 1rem;
-	}
-
-	.uusipeli {
-		padding: 0.5rem 1rem;
-		font-size: 1rem;
-		background-color: #3d25c8;
-		color: white;
-		border: none;
-		border-radius: 5px;
-		cursor: pointer;
-	}
-</style>
