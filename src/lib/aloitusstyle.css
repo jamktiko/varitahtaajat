@@ -72,6 +72,7 @@
 	height: clamp(200px, 25vw, 350px);
 	border-radius: 50%;
 	background-color: #8338ec;
+	animation: kellunta1 3s ease-in-out infinite;
 }
 
 .ympyra2 {
@@ -84,6 +85,20 @@
 
 	border-radius: 50%;
 	background-color: #fb5607;
+	animation: kellunta1 2s ease-in-out infinite;
+}
+@keyframes kellunta1 {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(8px, -10px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
 }
 
 .ympyra3-1,
@@ -93,6 +108,7 @@
 	width: clamp(60px, 20vw, 120px);
 	height: clamp(60px, 20vw, 120px);
 	border-radius: 50%;
+	animation: kellunta 2s ease-in-out infinite;
 }
 
 .ympyra3-1 {
@@ -112,6 +128,17 @@
 	right: 8%;
 	background-color: #fffb0b;
 }
+
+@keyframes kellunta {
+	0%,
+	100% {
+		transform: translateY(0);
+	}
+	50% {
+		transform: translateY(-20px);
+	}
+}
+
 .material-symbols-outlined {
 	font-family: 'Material Symbols Outlined';
 	font-variation-settings:
@@ -147,17 +174,35 @@
 	top: 24%;
 	left: 14%;
 	background-color: #3a86ff;
+	animation: diagonal-fast 2s ease-in-out infinite;
 }
 
 .ympyra4-2 {
 	bottom: 26%;
 	right: 24%;
 	background-color: #ff006e;
+	animation: diagonal-fast 3s ease-in-out infinite;
 }
+
+@keyframes diagonal-fast {
+	0% {
+		transform: translate(0, 0);
+	}
+
+	50% {
+		transform: translate(10px, 10px);
+	}
+
+	100% {
+		transform: translate(0, 0);
+	}
+}
+
 .fien-text {
 	font-size: clamp(30px, 10vw, 40px);
 	color: #000000;
 }
+
 /* ===== TABLET ===== */
 @media (min-width: 768px) {
 	.circle {
@@ -211,6 +256,102 @@
 		top: 50%;
 		left: 50%;
 		transform: translate(-50%, -50%);
+		animation: white-random-flash 12s linear infinite;
+	}
+	@keyframes white-random-flash {
+		0% {
+			background-color: #ffffff;
+		}
+		78% {
+			background-color: #ffffff;
+		}
+
+		79% {
+			background-color: #ff006e;
+		}
+
+		80% {
+			background-color: #3a86ff;
+		}
+
+		81% {
+			background-color: #ffbe0b;
+		}
+
+		82% {
+			background-color: #8338ec;
+		}
+
+		83% {
+			background-color: #06d6a0;
+		}
+
+		84% {
+			background-color: #fb5607;
+		}
+
+		85% {
+			background-color: #00bbf9;
+		}
+
+		86% {
+			background-color: #000000;
+		}
+
+		87% {
+			background-color: #9b5de5;
+		}
+
+		88% {
+			background-color: #70e000;
+		}
+		89% {
+			background-color: #ffffff;
+		}
+
+		90% {
+			background-color: #ff006e;
+		}
+
+		91% {
+			background-color: #3a86ff;
+		}
+
+		92% {
+			background-color: #ffbe0b;
+		}
+
+		93% {
+			background-color: #8338ec;
+		}
+
+		94% {
+			background-color: #06d6a0;
+		}
+
+		95% {
+			background-color: #fb5607;
+		}
+
+		96% {
+			background-color: #00bbf9;
+		}
+
+		97% {
+			background-color: #000000;
+		}
+
+		98% {
+			background-color: #9b5de5;
+		}
+
+		99% {
+			background-color: #70e000;
+		}
+
+		100% {
+			background-color: #ffffff;
+		}
 	}
 	.circle {
 		position: absolute;
