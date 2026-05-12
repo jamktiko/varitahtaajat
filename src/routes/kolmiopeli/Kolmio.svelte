@@ -1,6 +1,10 @@
 <script lang="ts">
 	import '$lib/kolmiopelistyles/kolmio.css';
 	import { ColorAPI, type ColorData } from '$lib/API/ColorAPI';
+	import { translations } from '$lib/translations';
+	import { languageState } from '$lib/language.svelte';
+
+	let t = $derived(translations[languageState.language]);
 
 	let isSpinning = $state(false);
 	let gameState = $state<'start' | 'spinning' | 'guessing' | 'result'>('start');
@@ -93,12 +97,12 @@
 		}
 	}
 	function getMainButtonText() {
-		if (gameState === 'start') return 'Launch';
-		if (gameState === 'spinning') return 'Spinning...';
-		if (gameState === 'guessing') return 'Check';
-		if (gameState === 'result') return 'Retry';
+		if (gameState === 'start') return t.launch;
+		if (gameState === 'spinning') return t.spinning;
+		if (gameState === 'guessing') return t.check;
+		if (gameState === 'result') return t.retry;
 
-		return 'Launch';
+		return t.launch;
 	}
 	/*Percents*/
 	let accuracyPercent = $state<number | null>(null);
@@ -120,7 +124,7 @@
 			<span class="material-symbols-outlined nuoli"> arrow_back_ios_new </span>
 		</a>
 		<div class="jersey-10-regular kolmioteksti1">
-			{resultText || 'Press Start'}
+			{resultText || t.pressStart}
 		</div>
 		<div class="jersey-10-regular percentit">
 			{accuracyPercent !== null ? `${accuracyPercent}%` : '0%'}
