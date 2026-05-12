@@ -1,17 +1,43 @@
-<script>
-	let { open, onClose, children } = $props();
+<script lang="ts">
+	interface Props {
+		open: boolean;
+		onClose: () => void;
+		score: number;
+		onRestart: () => void;
+	}
+	let { open, onClose, score, onRestart }: Props = $props();
 </script>
 
 {#if open}
 	<button class="backdrop" aria-label="Close modal" onclick={onClose}> </button>
 
 	<div class="modal">
-		{@render children?.()}
+		<div class="tulos">
+			<p>Sait {score} pistettä!</p>
+			<button class="uusipeli" onclick={onRestart}>Pelaa uudestaan</button>
+		</div>
 		<button onclick={onClose}>Close</button>
 	</div>
 {/if}
 
 <style>
+	.tulos {
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 1rem;
+	}
+
+	.uusipeli {
+		padding: 0.5rem 1rem;
+		font-size: 1rem;
+		background-color: #3d25c8;
+		color: white;
+		border: none;
+		border-radius: 5px;
+		cursor: pointer;
+	}
+
 	.backdrop {
 		position: fixed;
 		top: 0;
