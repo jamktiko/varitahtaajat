@@ -2,6 +2,7 @@
 	import { resolve } from '$app/paths';
 	import '$lib/aloitusstyle.css';
 	import { goto } from '$app/navigation';
+	import { languageState } from '$lib/language.svelte';
 </script>
 
 <div class="page">
@@ -22,9 +23,12 @@
 		<button onclick={() => goto(resolve('/infosivu'))} class="ympyra3-1"
 			><span class="material-symbols-outlined icon-1">info</span></button
 		>
-		<a href={resolve('/infosivu')} class="ympyra3-2"
-			><span class="material-symbols-outlined icon-2">settings</span></a
+		<button
+			onclick={() => (languageState.language = languageState.language === 'fi' ? 'en' : 'fi')}
+			class="fien-text ympyra3-2 jersey-10-regular"
+			>{languageState.language === 'fi' ? 'FI' : 'EN'}</button
 		>
+
 		<div class="ympyra4-1"></div>
 		<div class="ympyra4-2"></div>
 	</div>
