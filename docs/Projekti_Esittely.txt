@@ -1,0 +1,3 @@
+Väritähtääjä on peli jossa on kolme mini peliä, muistipeli, sävypeli ja kolmiopeli. Muistipelissä pelaajan pitää muistaa annettujen värien järjestys. Sävypelissä pelaajan tulee saada väri mahdollisimman lähelle annettua väriä HSB-arvoja käyttäen. Kolmiopelissä pelaajan tulee saada värin RGB-arvot oikein.
+ 
+Pelin avulla oppii väreistä ja kuinka yhdenkin arvon muuttaminen vaihtaa sävyä. Pelin avulla pystyy parantamaan omaa väri silmäänsä ja muistia.
