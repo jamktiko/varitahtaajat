@@ -58,6 +58,11 @@
 		const g = Number(playerG);
 		const b = Number(playerB);
 
+		if (r < 0 || r > 255 || g < 0 || g > 255 || b < 0 || b > 255) {
+			resultText = 'RGB numbers must be between 0 and 255!';
+			return;
+		}
+
 		correctR = currentColor.RGBComponents.R;
 		correctG = currentColor.RGBComponents.G;
 		correctB = currentColor.RGBComponents.B;
